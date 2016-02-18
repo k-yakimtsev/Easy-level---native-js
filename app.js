@@ -13,19 +13,23 @@ window.onload=function(){
             this.textArea = document.querySelector('#js-message');
             this.textAreaTotal = document.querySelector('#js-message-left-total');
             this.textAreaLeft = document.querySelector('#js-message-left-symbols');
-            this.textArea.setAttribute("maxlength", this.maxChar);
             this.events();
         },
 
         events: function() {
             var that = this;
             this.textArea.addEventListener('keyup', function(e){
-                e.preventDefault();
 
                 var countMessage = that.textArea.value.length;
                 that.textAreaTotal.innerHTML = countMessage;
 
                 that.textAreaLeft.innerHTML = that.maxChar - countMessage;
+
+                if (countMessage > 10) {
+                    if (key == 8) {
+                        return false;
+                    }
+                }
             });
         }
     }
