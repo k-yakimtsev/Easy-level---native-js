@@ -32,6 +32,9 @@ window.onload=function(){
         },
 
         getChar: function(event) {
+            if (event.keyCode == 13) {
+                return String.fromCharCode(event.keyCode)
+            }
             if (event.which == null) {
                 if (event.keyCode < 32) return null;
                 return String.fromCharCode(event.keyCode)
