@@ -18,15 +18,19 @@ window.onload=function(){
 
         events: function() {
             var that = this;
+            this.textArea.addEventListener('keydown', function(e){
+                if (e.keyCode == 8) {
+                    that.writeCount();
+                }
+            });
             this.textArea.addEventListener('keypress', function(e){
-                e.preventDefault();
-
                 var charMessage = that.getChar(e);
                 var countMessage = that.textArea.value.length + 1;
                 if (charMessage && countMessage <= that.maxChar) {
                     that.textArea.innerHTML += charMessage;
-                    that.textAreaTotal.innerHTML = countMessage;
-                    that.textAreaLeft.innerHTML = that.maxChar - countMessage;
+                    that.writeCount();
+                }else {
+                    e.preventDefault();
                 }
             });
         },
@@ -44,6 +48,12 @@ window.onload=function(){
                 return String.fromCharCode(event.which);
             }
             return null;
+        },
+
+        writeCount: function(){
+            var countMessage = this.textArea.value.length + 1;
+            this.textAreaTotal.innerHTML = countMessage;
+            this.textAreaLeft.innerHTML = this.maxChar - countMessage;
         }
     }
 
