@@ -19,17 +19,14 @@ window.onload=function(){
         events: function() {
             var that = this;
             this.textArea.addEventListener('keyup', function(e){
-
                 var countMessage = that.textArea.value.length;
-                that.textAreaTotal.innerHTML = countMessage;
-
-                that.textAreaLeft.innerHTML = that.maxChar - countMessage;
-
-                if (countMessage > 10) {
-                    if (key == 8) {
-                        return false;
-                    }
+                if (countMessage <= that.maxChar) {
+                    that.textAreaTotal.innerHTML = countMessage;
+                    that.textAreaLeft.innerHTML = that.maxChar - countMessage;
                 }
+
+                var newMessage = that.textArea.value.substr(0, that.maxChar);
+                that.textArea.value = newMessage;
             });
         }
     }
