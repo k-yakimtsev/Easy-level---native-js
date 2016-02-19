@@ -19,12 +19,26 @@ window.onload=function(){
         events: function() {
             var that = this;
 
+            this.textArea.addEventListener('paste', function(){
+                setTimeout(function() {
+                    var countMessage = that.textArea.value.length;
+                    console.log(countMessage);
+                    if (countMessage > that.maxChar) {
+                        var newMessage = that.textArea.value.substr(0, that.maxChar);
+                        that.textArea.value = newMessage;
+                    }
+                    setTimeout(function() {
+                        var countMessageAfter = that.textArea.value.length;
+                        that.writeCount(countMessageAfter);
+                    }, 10);
+                }, 30);
+            });
             this.textArea.addEventListener('keydown', function(e){
+                var countMessage = that.textArea.value.length - 1;
                 if (event.keyCode == 8) {
                     setTimeout(function() {
-                        var countMessage = that.textArea.value.length;
                         that.writeCount(countMessage);
-                    }, 20);
+                    }, 30);
                 }
             });
             this.textArea.addEventListener('keypress', function(e){
