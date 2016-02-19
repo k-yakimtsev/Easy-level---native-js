@@ -18,15 +18,25 @@ window.onload=function(){
 
         events: function() {
             var that = this;
-            this.textArea.addEventListener('keypress', function(e){
-                e.preventDefault();
 
+            this.textArea.addEventListener('keydown', function(e){
+                if (event.keyCode == 8) {
+                    setTimeout(function() {
+                        var countMessage = that.textArea.value.length;
+                        that.writeCount(countMessage);
+                    }, 20);
+                }
+            });
+            this.textArea.addEventListener('keypress', function(e){
                 var charMessage = that.getChar(e);
                 var countMessage = that.textArea.value.length + 1;
                 if (charMessage && countMessage <= that.maxChar) {
-                    that.textArea.innerHTML += charMessage;
-                    that.textAreaTotal.innerHTML = countMessage;
-                    that.textAreaLeft.innerHTML = that.maxChar - countMessage;
+                    if (countMessage != 1) {
+                        that.textArea.innerHTML += charMessage;
+                    }
+                    that.writeCount(countMessage);
+                } else {
+                    e.preventDefault();
                 }
             });
         },
@@ -44,6 +54,11 @@ window.onload=function(){
                 return String.fromCharCode(event.which);
             }
             return null;
+        },
+
+        writeCount: function(number) {
+            this.textAreaTotal.innerHTML = number;
+            this.textAreaLeft.innerHTML = this.maxChar - number;
         }
     }
 
