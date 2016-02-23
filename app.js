@@ -13,6 +13,7 @@ window.onload=function(){
             this.textArea = document.querySelector('#js-message');
             this.textAreaTotal = document.querySelector('#js-message-left-total');
             this.textAreaLeft = document.querySelector('#js-message-left-symbols');
+            this.textAreaLeft.innerHTML = this.maxChar;
             this.events();
         },
 
