@@ -1,4 +1,5 @@
-window.onload=function(){
+(function() {
+ 'use strict';
 
     /**
     * TextCounter
@@ -19,7 +20,6 @@ window.onload=function(){
 
         events: function() {
             var that = this;
-
             this.textArea.addEventListener('paste', function(){
                 setTimeout(function() {
                     var countMessage = that.textArea.value.length;
@@ -79,4 +79,5 @@ window.onload=function(){
     }
 
     TextCounter.init();
-}
+
+})();
