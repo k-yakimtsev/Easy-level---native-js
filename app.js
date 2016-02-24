@@ -1,15 +1,15 @@
-var TextCounter = (function() {
+var TextCounter = (function(maxChar, idArea, idTotal, idSymbols) {
     'use strict';
     return {
         maxChar: 140,
-        textArea: null,
-        textAreaTotal: null,
-        textAreaLeft: null,
+        textArea: "#js-message",
+        textAreaTotal: "#js-message-left-total",
+        textAreaLeft: "#js-message-left-symbols",
 
         init: function() {
-            this.textArea = document.querySelector('#js-message');
-            this.textAreaTotal = document.querySelector('#js-message-left-total');
-            this.textAreaLeft = document.querySelector('#js-message-left-symbols');
+            this.textArea = document.querySelector(this.textArea);
+            this.textAreaTotal = document.querySelector(this.textAreaTotal);
+            this.textAreaLeft = document.querySelector(this.textAreaLeft);
             this.textAreaLeft.innerHTML = this.maxChar;
             this.events();
         },
