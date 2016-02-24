@@ -23,7 +23,6 @@ window.onload=function(){
             this.textArea.addEventListener('paste', function(){
                 setTimeout(function() {
                     var countMessage = that.textArea.value.length;
-                    console.log(countMessage);
                     if (countMessage > that.maxChar) {
                         var newMessage = that.textArea.value.substr(0, that.maxChar);
                         that.textArea.value = newMessage;
@@ -35,10 +34,12 @@ window.onload=function(){
                 }, 30);
             });
             this.textArea.addEventListener('keydown', function(e){
-                var countMessage = that.textArea.value.length - 1;
                 if (event.keyCode == 8) {
                     setTimeout(function() {
-                        that.writeCount(countMessage);
+                        var countMessage = that.textArea.value.length;
+                        if (countMessage >= 0) {
+                            that.writeCount(countMessage);
+                        }
                     }, 30);
                 }
             });
