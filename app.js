@@ -1,10 +1,6 @@
-(function() {
- 'use strict';
-
-    /**
-    * TextCounter
-    */
-    var TextCounter = {
+var TextCounter = (function() {
+    'use strict';
+    return {
         maxChar: 140,
         textArea: null,
         textAreaTotal: null,
@@ -77,7 +73,8 @@
             this.textAreaLeft.innerHTML = this.maxChar - number;
         }
     }
-
-    TextCounter.init();
-
 })();
+
+window.onload = function() {
+    TextCounter.init();
+}
