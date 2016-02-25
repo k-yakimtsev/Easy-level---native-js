@@ -30,7 +30,7 @@ var TextCounter = (function() {
                 }, 30);
             });
             this.textArea.addEventListener('keydown', function(e){
-                if (event.keyCode == 8) {
+                if (event.keyCode == 8 || event.keyCode == 46) {
                     setTimeout(function() {
                         var countMessage = that.textArea.value.length;
                         if (countMessage >= 0) {
