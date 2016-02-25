@@ -1,4 +1,4 @@
-var TextCounter = (function(maxChar, idArea, idTotal, idSymbols) {
+var TextCounter = (function() {
     'use strict';
     return {
         maxChar: 140,
